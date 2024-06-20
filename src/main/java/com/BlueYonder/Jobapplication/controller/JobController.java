@@ -4,10 +4,9 @@ import com.BlueYonder.Jobapplication.model.Jobinfo;
 import com.BlueYonder.Jobapplication.service.Jobservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/jobs")
@@ -20,4 +19,26 @@ public class JobController {
         return  service.saveJob(job);
 
     }
+    @PostMapping("/addjobs")
+    public List<Jobinfo> addJobs(@RequestBody  List<Jobinfo> jobs) {
+        return service.saveJobs(jobs);
+    }
+
+    @GetMapping("/findalljobs")
+    public List<Jobinfo> findAllJobs() {
+        return service.getJobs();
+    }
+    @GetMapping("/findjobbyid/{id}")
+    public Jobinfo findJobById(@PathVariable int id) {
+        return service.getJobById(id);
+    }
+    @PutMapping("/updatejob/{id}")
+    public Jobinfo updateJob(@RequestBody Jobinfo job,@PathVariable int id) {
+        return service.updateJob(job,id);
+    }
+    @DeleteMapping("/deletejob/{id}")
+    public String deleteJob(@PathVariable int id) {
+        return service.deleteJob(id);
+    }
+
 }

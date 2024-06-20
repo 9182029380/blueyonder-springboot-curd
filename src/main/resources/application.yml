@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Jobapplicationinfo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/studentdatabase
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 2008
